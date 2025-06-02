@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "path": "frontend"
+    },
+    {
+      "path": "backend"
+    },
+    {
+      "name": "PantryApp",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "python.pythonPath": "backend/venv/bin/python",
+    "dart.flutterSdkPath": "C:\\Users\\Izaak Valadez\\Downloads\\flutter",
+    "terminal.integrated.cwd": "${workspaceFolder:frontend}",
+    "terminal.integrated.splitCwd": "inherited",
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/.dart_tool": true,
+      "**/.idea": true,
+      "**/.vscode": false,
+      "**/build": true,
+      "**/venv": true,
+      "**/__pycache__": true
+    }
+  }
+}
