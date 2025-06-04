@@ -23,7 +23,22 @@
       "**/.vscode": false,
       "**/build": true,
       "**/venv": true,
-      "**/__pycache__": true
+      "**/__pycache__": true,
+
+      "**/android/": true,
+      "**/ios/": true,
+      "**/linux/": true,
+      "**/macos/": true,
+      "**/test/": true,
+      "**/web/": true,
+      "**/windows/": true,
+
+      "**/.gitignore": true,
+      "**/.metadata": true,
+      "**/analysis_options.yaml": true,
+      "**/frontend.iml": true,
+      "**/pubspec.lock": true,
+      "**/README.md": true,
     }
   }
 }
