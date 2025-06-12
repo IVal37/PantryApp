@@ -1,4 +1,8 @@
+// Packages
 import 'package:flutter/material.dart';
+
+// Files
+import '../../constants/colors.dart';
 
 class RecipeScreen extends StatelessWidget {
   const RecipeScreen({super.key});
@@ -6,7 +10,7 @@ class RecipeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[200],
+      backgroundColor: bgWhite,
     );
   }
 }

@@ -25,7 +25,7 @@
       "**/venv": true,
       "**/__pycache__": true,
 
-      "**/android/": true,
+      //"**/android/": true,
       "**/ios/": true,
       "**/linux/": true,
       "**/macos/": true,
