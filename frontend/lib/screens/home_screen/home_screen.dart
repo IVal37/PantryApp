@@ -1,7 +1,8 @@
 // Packages
 import 'package:flutter/material.dart';
-import 'package:frontend/screens/home_screen/indexed_screens.dart';
 import 'package:frontend/screens/ingredients/ingredient_screen.dart';
+import 'package:frontend/screens/recipes/recipe_screen.dart';
+import 'package:frontend/screens/shopping_list/shopping_list_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // Files
@@ -86,11 +87,17 @@ class HomeScreen extends StatelessWidget {
     );
   }
   
+  final List<Widget> _screens = const [
+    IngredientScreen(),
+    ShoppingListScreen(),
+    RecipeScreen(),
+  ];
+
   void ChooseScreen(context, int i) {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => IndexedScreens(initialIndex: i),
+        builder: (BuildContext context) => _screens[i],
       ),
     );
   }

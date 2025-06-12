@@ -1,11 +1,16 @@
 // Packages
 import 'package:flutter/material.dart';
-import 'package:frontend/constants/colors.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:frontend/screens/ingredients/ingredient_screen.dart';
+import 'package:frontend/screens/recipes/recipe_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Files
 import 'util/list_widget.dart';
 import 'util/list_info.dart';
 import 'util/list_item.dart';
+import '../../constants/colors.dart';
+import '../../constants/strings.dart';
 
 class ShoppingListScreen extends StatefulWidget {
   const ShoppingListScreen({super.key});
@@ -66,6 +71,45 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgWhite,
+      appBar: AppBar(
+        backgroundColor: bgBlack,
+        title: Text(
+          appTitle,
+          style: GoogleFonts.cormorant(
+              fontSize: 36,
+              color: bgWhite,
+              letterSpacing: 4,
+          ),
+        ),
+        centerTitle: true,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        onTap: _onItemTapped,
+        backgroundColor: bgBlack,
+        selectedItemColor: shoppingListColor,
+        unselectedItemColor: bgWhite,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.carrot),
+            label: "INGREDIENTS",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.list),
+            label: "SHOPPING LIST",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.book),
+            label: "RECIPES",
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.deepPurple,
+        child: Icon(
+          Icons.line_axis,
+        ),
+      ),
       body: ListView.builder(
         itemCount: listList.length,
         itemBuilder: (context, index) {
@@ -127,5 +171,20 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
         ),
       ),
     );
+  }
+
+
+  void _onItemTapped(int index) {
+    if(index == 0) {
+      Navigator.pushReplacement(
+        context, 
+        MaterialPageRoute(builder: (context) => IngredientScreen()));
+    }
+    if(index == 2) {
+      Navigator.pushReplacement(
+        context, 
+        MaterialPageRoute(builder: (context) => RecipeScreen())
+      );
+    }
   }
 }
