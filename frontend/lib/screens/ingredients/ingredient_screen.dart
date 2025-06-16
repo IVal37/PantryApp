@@ -6,6 +6,7 @@ import 'package:frontend/screens/shopping_list/shopping_list_screen.dart';
 // Files
 import '../../constants/colors.dart';
 import '../../constants/widgets.dart';
+import '../../constants/funcs.dart';
 
 class IngredientScreen extends StatefulWidget {
   const IngredientScreen({super.key});
@@ -24,32 +25,13 @@ class _IngredientScreenState extends State<IngredientScreen> {
         currIndex: 0, 
         onItemTap: (index) {
           if(index == 1) {
-            Navigator.pushReplacement(
-              context, 
-              MaterialPageRoute(builder: (context) => ShoppingListScreen()));
+            Navigator.pushReplacement(context, noTransitionRoute(ShoppingListScreen()));
           }
           if(index == 2) {
-            Navigator.pushReplacement(
-              context, 
-              MaterialPageRoute(builder: (context) => RecipeScreen())
-            );
+            Navigator.pushReplacement(context, noTransitionRoute(RecipeScreen()));
           }
         }  
       ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    if(index == 0) {
-      Navigator.pushReplacement(
-        context, 
-        MaterialPageRoute(builder: (context) => ShoppingListScreen()));
-    }
-    if(index == 2) {
-      Navigator.pushReplacement(
-        context, 
-        MaterialPageRoute(builder: (context) => RecipeScreen())
-      );
-    }
   }
 }

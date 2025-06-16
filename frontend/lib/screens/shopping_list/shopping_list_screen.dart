@@ -9,6 +9,7 @@ import 'util/list_info.dart';
 import 'util/list_item.dart';
 import '../../constants/colors.dart';
 import '../../constants/widgets.dart';
+import '../../constants/funcs.dart';
 
 class ShoppingListScreen extends StatefulWidget {
   const ShoppingListScreen({super.key});
@@ -78,30 +79,50 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
         currIndex: 1, 
         onItemTap: (index) {
           if(index == 0) {
-            Navigator.pushReplacement(
-              context, 
-              MaterialPageRoute(builder: (context) => IngredientScreen()));
+            Navigator.pushReplacement(context, noTransitionRoute(IngredientScreen()));
           }
           if(index == 2) {
-            Navigator.pushReplacement(
-              context, 
-              MaterialPageRoute(builder: (context) => RecipeScreen())
-            );
+            Navigator.pushReplacement(context, noTransitionRoute(RecipeScreen()));
           }
         }  
       ),
       drawer: Drawer(
-        backgroundColor: Colors.deepPurple,
-        child: Icon(
-          Icons.line_axis,
+        backgroundColor: shoppingListColor,
+        width: 250.0,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 24.0),
+                child: Text(
+                  "List Groups",
+                  style: TextStyle(
+                    color: bgBlack,
+                    fontSize: 24.0,
+                    fontFamily: "Times New Roman",
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 24.0,
+                color: bgBlack,
+                child: GestureDetector(
+                ),
+              )
+            ],
+          ),
         ),
       ),
       body: ListView.builder(
-        itemCount: listList.length,
+        itemCount: currList[currListIndex].length,
         itemBuilder: (context, index) {
           return ListWidget(
-            listName: listList[index].name,
-            listContent: listList[index].items,
+            listName: currList[currListIndex][index].name,
+            listContent: currList[currListIndex][index].items,
             onFavorite: () {
               setState(() {
                 listList[index].toggleFavorite();
@@ -121,16 +142,16 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
               setState(() {
                 for(int i = 0; i < listList.length; i++) {
                   if(i == index) {
-                    listList[index].toggleDropdown();
+                    currList[currListIndex][index].toggleDropdown();
                     continue;
                   }
-                  listList[i].setDropdown(false);
+                  currList[currListIndex][i].setDropdown(false);
                 }
               });
             },
             // Getters
             getIsExpanded: () {
-              return listList[index].isDropdown;
+              return currList[currListIndex][index].isDropdown;
             },
             getIsFavorite: () {
               return listList[index].isFavorite;
